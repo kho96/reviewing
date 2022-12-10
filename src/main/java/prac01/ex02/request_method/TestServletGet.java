@@ -1,4 +1,4 @@
-package prac01.ex02;
+package prac01.ex02.request_method;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

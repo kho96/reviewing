@@ -1,4 +1,4 @@
-package prac01.ex01;
+package prac01.ex01.servlet_creation;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package prac01.ex02;
+package prac01.ex02.move_page;
 
 import java.io.IOException;
 import java.io.PrintWriter;

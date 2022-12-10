@@ -1,34 +1,27 @@
-package prac02.ex01;
+package prac02.ex01.request_scope;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/jsp.test")
-public class JspTestServlet extends HttpServlet {
+@WebServlet("/attr.test3")
+public class AttributeTestServlet3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public JspTestServlet() {
+    public AttributeTestServlet3() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("/jsp.test 서블릿..");
-		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
-		// JSP 파일로 forward
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prac02/jspResultPage.jsp");
-		dispatcher.forward(request, response);
-		
+		// request스코프에 저장된 값 확인하기 --> 존재하지 않는다.
+		System.out.println("test3응답===============");
+		System.out.println("name : " + request.getAttribute("name"));
+		System.out.println("age : " + request.getAttribute("age"));
+		System.out.println("ids : " + request.getAttribute("ids"));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
