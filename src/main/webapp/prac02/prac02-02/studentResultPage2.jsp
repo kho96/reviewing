@@ -1,5 +1,5 @@
-<%@ page import="prac02.ex02.jdbc_to_servlet01.StudentDao" %>
-<%@ page import="prac02.ex02.jdbc_to_servlet01.StudentVo" %>
+<%@ page import="prac02.ex02.jdbc_to_servlet02.StudentDao" %>
+<%@ page import="prac02.ex02.jdbc_to_servlet02.StudentVo" %>
 <%-- <%@ page import="import할 클래스 경로" %> : jsp에서 import 하는 방법! --%>
 <!-- 생성한 클래스를 임포트할 경우 패키지명도 같이 적어야 임포트가 된다. -->
 
@@ -21,7 +21,7 @@
 </script>
 </head>
 <body>
-	<form action="/prac_servlet/student.test" method="post">
+	<form action="/prac_servlet/student.test2" method="post">
 		<input type="hidden" name="modRun" value="true">
 		<input type="hidden" name="orgName" value="<%=name%>">
 		<table border="1">

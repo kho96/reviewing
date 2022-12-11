@@ -1,4 +1,4 @@
-package prac02.ex02.jdbc_to_servlet01;
+package prac02.ex02.jdbc_to_servlet02;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 public class StudentDao {
 	private static StudentDao instance;
@@ -19,22 +23,45 @@ public class StudentDao {
 		return instance;
 	}
 	
-	private final String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
-	private final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private final String ID = "jin";
-	private final String PW = "1234";
+//	private final String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
+//	private final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+//	private final String ID = "jin";
+//	private final String PW = "1234";
+//	
+//	// getConnection
+//	public Connection getConnection() {
+//		try {
+//			Class.forName(DRIVER_NAME);
+//			Connection conn = DriverManager.getConnection(URL, ID, PW);
+//			return conn;
+//		} catch (Exception e) {
+//			e.printStackTrace(); 
+//		}
+//		return null;
+//	}
 	
-	// getConnection
-	public Connection getConnection() {
+	// 커넥션 풀에서 커넥션 얻어오기
+	// 처음에는 context.xml 파일 생성 (META-INF)에 위치 -> WEM-INF, web.xml수정하기
+	private Connection getConnection() {
 		try {
-			Class.forName(DRIVER_NAME);
-			Connection conn = DriverManager.getConnection(URL, ID, PW);
+			Context context = new InitialContext(); // 컨텍스트 만들기
+			
+			// context.xml에 등록된 커넥션 풀을 얻어낸다.
+			DataSource dataSource = (DataSource) context.lookup("java:/comp/env/jdbc/oracleDB");
+//			DataSource dataSource = 
+//			(DataSource)((Context) context.lookup("java:/comp/env"))
+//			.lookup("jdbc/oracleDB");
+			
+			// 커넥션 풀에 들어 있는 커넥션을 얻어온다.
+			Connection conn = dataSource.getConnection();
+			System.out.println("conn : "+ conn);
 			return conn;
 		} catch (Exception e) {
-			e.printStackTrace(); 
+			e.printStackTrace();
 		}
 		return null;
 	}
+	
 	
 	// closeAll
 	private void closeAll(Connection conn, PreparedStatement pstmt, ResultSet rs) {

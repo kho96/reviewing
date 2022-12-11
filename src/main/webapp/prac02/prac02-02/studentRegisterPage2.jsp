@@ -21,7 +21,7 @@ $(function() {
 	});
 	$("#list").click(function() {
 		// 새로운 요청으로 서블릿에 전달하는 방식도 있지만, get 방식으로 "list"라는 이름으로 "show"를 넘김.
-		location.href="/prac_servlet/prac02/prac02-02/studentList.jsp";
+		location.href="/prac_servlet/prac02/prac02-02/studentList2.jsp";
 	});
 });
 </script>

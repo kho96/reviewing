@@ -1,4 +1,4 @@
-package prac02.ex02.jdbc_to_servlet01;
+package prac02.ex02.jdbc_to_servlet02;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/student.test")
+@WebServlet("/student.test2")
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StudentDao dao = StudentDao.getInstance(); // 서블릿에서 사용할 Dao객체 얻기
@@ -31,7 +31,7 @@ public class StudentServlet extends HttpServlet {
 			//System.out.println("name : " + name);
 			boolean result = dao.deleteStudent(name);
 			if (result) {
-				response.sendRedirect("/prac_servlet/prac02/prac02-02/studentList.jsp");
+				response.sendRedirect("/prac_servlet/prac02/prac02-02/studentList2.jsp");
 			} else {
 				response.setCharacterEncoding("utf-8");
 				response.setContentType("text/html");
@@ -41,7 +41,7 @@ public class StudentServlet extends HttpServlet {
 				out.write("</head>");
 				out.write("<body>");
 				out.write("<h1>삭제 오류입니다.</h1>");
-				out.write("<h1><a href='/prac_servlet/prac02/prac02-02/studentRegisterPage.jsp'>돌아가기</a><h1>");
+				out.write("<h1><a href='/prac_servlet/prac02/prac02-02/studentRegisterPage2.jsp'>돌아가기</a><h1>");
 				out.write("</body>");
 				out.write("</html>");
 			}
@@ -51,7 +51,7 @@ public class StudentServlet extends HttpServlet {
 		if (request.getParameter("mod") != null) {
 			String name = request.getParameter("name"); // request영역에 name저장
 			System.out.println("name :" + name);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/prac02/prac02-02/studentResultPage.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/prac02/prac02-02/studentResultPage2.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
@@ -66,7 +66,7 @@ public class StudentServlet extends HttpServlet {
 			StudentVo vo = new StudentVo(name, grade, myClass, class_no);
 			boolean result = dao.modifyStudent(orgName, vo);
 			if (result) {
-				response.sendRedirect("/prac_servlet/prac02/prac02-02/studentList.jsp");
+				response.sendRedirect("/prac_servlet/prac02/prac02-02/studentList2.jsp");
 			} else {
 				response.setCharacterEncoding("utf-8");
 				response.setContentType("text/html");
@@ -76,7 +76,7 @@ public class StudentServlet extends HttpServlet {
 				out.write("</head>");
 				out.write("<body>");
 				out.write("<h1>수정 오류입니다.</h1>");
-				out.write("<h1><a href='/prac_servlet/prac02/prac02-02/studentRegisterPage.jsp'>돌아가기</a><h1>");
+				out.write("<h1><a href='/prac_servlet/prac02/prac02-02/studentRegisterPage2.jsp'>돌아가기</a><h1>");
 				out.write("</body>");
 				out.write("</html>");
 			}
@@ -93,7 +93,7 @@ public class StudentServlet extends HttpServlet {
 		// Dao -> 학생 등록(추가) 작업 시키기
 		boolean result = dao.addStudent(vo);
 		if (result) {
-			response.sendRedirect("/prac_servlet/prac02/prac02-02/studentList.jsp");
+			response.sendRedirect("/prac_servlet/prac02/prac02-02/studentList2.jsp");
 		} else {
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("text/html");
@@ -103,7 +103,7 @@ public class StudentServlet extends HttpServlet {
 			out.write("</head>");
 			out.write("<body>");
 			out.write("<h1>등록 오류입니다.</h1>");
-			out.write("<h1><a href='/prac_servlet/prac02/prac02-02/studentRegisterPage.jsp'>돌아가기</a><h1>");
+			out.write("<h1><a href='/prac_servlet/prac02/prac02-02/studentRegisterPage2.jsp'>돌아가기</a><h1>");
 			out.write("</body>");
 			out.write("</html>");
 			
