@@ -21,8 +21,9 @@ public class SetCookie extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 쿠키?
-		// 서버를 대신에 웹 브라우저에 상태를 저장 및 요청하고, 해당 정보를 서버에 보내 사용자를 식별하는 것
+		// 서버를 대신해 웹 브라우저에 상태를 저장 및 요청하고, 해당 정보를 서버에 보내 사용자를 식별하는 것
 		// 쿠키의 구성 요소 - 이름, 값, 유효시간(초), 도메인(쿠키를 생성하는 사이트), 경로(쿠키를 공유할 기준 경로)
+		// 보안에 있어서 쿠키는 취약함 -> 중요하지 않은 정보로 빠른 처리를 위한 저장값을 쿠키로 저장한다.
 		
 		// 쿠키생성
 		Cookie cookie = new Cookie("id", "hong");
